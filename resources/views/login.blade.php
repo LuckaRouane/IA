@@ -30,7 +30,7 @@ Admin - Page de connexion
             </div>
             @endisset
             <div class="form-group">
-                <a href="{{ route('welcome') }}" class="btn mb-2 btn-link">Revenir à l'acceuil</a>
+                <a href="{{ route('welcome') }}" class="btn mb-2 btn-link">Revenir à l'accueil</a>
             </div>
         </form>
     </div>

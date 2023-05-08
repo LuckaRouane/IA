@@ -2,6 +2,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="@yield('title', 'Intelligence Artificielle')" content="@yield('title', 'Intelligence Artificielle')">
+    <meta name="description" content="@yield('title', 'Intelligence Artificielle')">
+    <meta name="keywords" content="@yield('title', 'Intelligence Artificielle')">
+    <meta name="robots" content="@yield('title', 'Intelligence Artificielle')">
     <title>@yield('title', 'Intelligence Artificielle')</title>
     <link rel="stylesheet" href="{{ asset('assets/css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/feather.css') }}">
