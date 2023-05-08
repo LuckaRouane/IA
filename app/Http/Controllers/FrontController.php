@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\VArticle;
 use App\Http\Controllers\ArticleController;
+use Illuminate\Support\Facades\Cache;
 
 class FrontController extends Controller
 {
@@ -15,15 +16,33 @@ class FrontController extends Controller
         return view('front.home');
     }
 
-    public function listCategorie()
+    public function listCategorie(Request $request)
     {
-        $categorie = Categorie::paginate(3);
+        $current_page=$request->query('page');
+        $cname="categorie_".strval($current_page);
+        $cur_page=intval($current_page);
+        $data = Cache::get($cname);
+        if($data===null){
+            Cache::put($cname,Categorie::paginate(3, ['*'], 'page', $cur_page));
+            $data = Cache::get($cname);
+        }
+        $categorie=$data;
         return view('front.categories',compact('categorie'));
     }
 
-    public function listArticle()
+    public function listArticle(Request $request)
     {
-        $article=VArticle::paginate(6);
+        $current_page=$request->query('page');
+        $cname="article_".strval($current_page);
+        $cur_page=intval($current_page);
+        $data = Cache::get($cname);
+        if($data===null){
+            Cache::put($cname,VArticle::paginate(6, ['*'], 'page', $cur_page));
+            $data = Cache::get($cname);
+        }
+        $article=$data;
+        // $article=VArticle::paginate(6);
+        
         $titres=[];
         foreach($article as $a){
             array_push($titres, ArticleController::getSlug($a->resume));

@@ -3,6 +3,21 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <IfModule mod_expires.c>
+	    ExpiresActive On
+	    # Cache les fichiers statiques pendant 30 jours
+	    ExpiresByType image/jpeg "access plus 30 days"
+	    ExpiresByType image/png "access plus 30 days"
+	    ExpiresByType text/css "access plus 30 days"
+	    ExpiresByType application/javascript "access plus 30 days"
+	</IfModule>
+
+    <IfModule mod_headers.c>
+	    <FilesMatch "\.(jpg|jpeg|png|gif|js|css)$">
+	        Header set Cache-Control "max-age=31536000, public"
+	    </FilesMatch>
+	</IfModule>
+
     RewriteEngine On
 
     # Handle Authorization Header
