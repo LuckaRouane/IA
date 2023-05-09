@@ -22,9 +22,9 @@ Route::middleware(['gzip'])->group(function(){
     
     //FrontOffice
     Route::get('/', [FrontController::class, 'welcome'])->name('welcome');
-    Route::get('/categorie', [FrontController::class, 'listCategorie'])->name('front_categories');
-    Route::get('/article', [FrontController::class, 'listArticle'])->name('front_articles');
-    Route::get('/article/fiche/{idarticle}/{titre}', [FrontController::class, 'ficheArticle'])->name('front_fiche_article');
+    Route::get('/categories', [FrontController::class, 'listCategorie'])->name('front_categories');
+    Route::get('/articles', [FrontController::class, 'listArticle'])->name('front_articles');
+    Route::get('/article/fiche/{idarticle}-{titre}', [FrontController::class, 'ficheArticle'])->name('front_fiche_article');
 
     //BackOffice
     Route::get('/admin', [AdminController::class, 'toAcceuil'])->name('admin_acceuil');
