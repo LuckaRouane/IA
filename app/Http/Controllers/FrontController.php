@@ -33,7 +33,7 @@ class FrontController extends Controller
     public function listArticle(Request $request)
     {
         $current_page=$request->query('page');
-        $cname="article_front_".strval($current_page);
+        $cname="article_".strval($current_page);
         $cur_page=intval($current_page);
         $data = Cache::get($cname);
         if($data===null){

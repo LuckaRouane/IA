@@ -155,9 +155,7 @@ class ArticleController extends Controller
                 if($aci>1){
                     for ($i=1; $i <=$aci ; $i++) { 
                         $cname="article_".strval($i);
-                        $cfrontname="article_front_".strval($i);
                         Cache::forget($cname);
-                        Cache::forget($cfrontname);
                     }
                 }else{
                     Cache::forget('article_1');
